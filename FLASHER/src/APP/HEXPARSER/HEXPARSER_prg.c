@@ -91,7 +91,7 @@ else{
 		 LowerAddress=0;
 		 LowerAddress = (digit0<<12) |(digit1<<8)|(digit2<<4)|(digit3); // 0x4000
 //		 L_AddressOfRecord = LowerAddress | BASE_ADDRESS ; //ok
-		 mydata.StartAddress &= ~(0x00000fff);
+		 mydata.StartAddress &= ~(0x0000ffff);
 		 mydata.StartAddress |= LowerAddress;
 		 // OR
 		 if(G_u32Higher == 0)

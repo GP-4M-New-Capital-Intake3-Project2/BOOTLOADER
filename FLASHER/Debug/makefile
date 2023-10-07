@@ -20,6 +20,7 @@ RM := rm -rf
 -include src/MCAL/GPIO/subdir.mk
 -include src/MCAL/FMI/subdir.mk
 -include src/APP/HEXPARSER/subdir.mk
+-include src/APP/BOOTLOADER/subdir.mk
 -include src/subdir.mk
 -include subdir.mk
 -include objects.mk

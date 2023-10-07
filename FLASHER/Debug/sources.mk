@@ -27,6 +27,7 @@ CPP_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+src/APP/BOOTLOADER \
 src/APP/HEXPARSER \
 src/MCAL/FMI \
 src/MCAL/GPIO \

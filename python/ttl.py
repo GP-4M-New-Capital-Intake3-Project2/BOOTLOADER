@@ -1,8 +1,9 @@
 import serial, time
 # hex = open("FLASHER.hex", "r")
 hex = open("blinkLed.hex", "r")
+# hex = open("blinkLed(app1).hex", "r")
 end = "END\n\n"
-ttl = serial.Serial('COM3', 9600, 8, 'N', 1)
+ttl = serial.Serial('COM4', 9600, 8, 'N', 1)
 for line in hex :
    for char in line:
       ttl.write(char.encode())
