@@ -76,7 +76,7 @@ if(A_pu8Record[8] == '4')
 		 digit3 =  HEXPARSER_su8AsciiToHex(A_pu8Record[12]);
 		G_u32Higher = (digit0<<12) |(digit1<<8)|(digit2<<4)|(digit3);
 }
-else{
+else if(A_pu8Record[8] == '0'){
 	// 0x10 =0xCC_H CC_L
 		CC_H = HEXPARSER_su8AsciiToHex(A_pu8Record[1]); // 1
 		CC_L = HEXPARSER_su8AsciiToHex(A_pu8Record[2]);

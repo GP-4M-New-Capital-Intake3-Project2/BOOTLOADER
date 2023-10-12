@@ -19,15 +19,16 @@ typedef enum{
 
 //Active App
 #define NO_APP 0xFF
-#define APP_1 1
-#define APP_2 2
+#define APP_1 0
+#define APP_2 1
 
 //pointer to fun
 typedef void (*APP_Call) (void) ;
 
-static void APP_vBootloaderJump(void);
 void APP_vBootloaderInit(void);
 void APP_vBootloaderWrite(void);
+static void APP_vBootloaderJump(void);
+static void APP_vBootloaderGetActiveBank(void);
 
 
 

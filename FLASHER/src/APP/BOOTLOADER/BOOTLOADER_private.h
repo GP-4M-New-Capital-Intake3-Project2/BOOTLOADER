@@ -32,7 +32,9 @@
  * APP_2
  *
  */
-#define RUNNING_APP_BLOCK_NUMBER *((volatile u32 *)0x08020000)
+
+#define ACTIVE_APP_ADDRESS 0x08020000
+#define RUNNING_APP_BLOCK_NUMBER *((volatile u32 *)ACTIVE_APP_ADDRESS)
 
 //address of sector 1 _ APP one
 #define APP_1_ADDRESS 0x8004000
