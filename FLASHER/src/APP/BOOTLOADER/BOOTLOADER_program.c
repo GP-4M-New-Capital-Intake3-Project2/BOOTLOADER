@@ -42,6 +42,15 @@ static void APP_vBootloaderGetActiveBank(){
 		ActiveAppAddress++;
 		counter++;
 	}
+	//reset flash sector 5
+	if(ActiveAppAddress == ACTIVE_APP_END_ADDRESS){
+		MFMI_vEraseSector(5);
+		conf.Data = 0x0;
+		for(u8 cout = 0 ; cout <= ActiveBank ; cout++){
+			conf.StartAddress = ACTIVE_APP_ADDRESS+cout;
+			MFMI_vFlashWrite(&conf);
+		}
+	}
 }
 
 static void APP_vBootloaderJump(void){
@@ -98,26 +107,25 @@ void APP_vBootloaderInit(){
 
 void APP_vBootloaderWrite(){
 
-	u8 itr=0;
-	u8 d[50]={} ;
-	u8 myAPP;
+	u8 Local_u8itrator=0;
+	u8 Locla_u8Buffer[50]={} ;
 	//	flag to detect new hex code
 	u8 RX_Flag = 1;
 	//wait for UART RX Flag
-	d[itr] = MUART_u8ReceiveByteSynchBlocking(&My_UART);
+	Locla_u8Buffer[Local_u8itrator] = MUART_u8ReceiveByteSynchBlocking(&My_UART);
 	//if received data do not jump to app wait hex code
 	MSTK_vStopTimer();
 	MUART_vTransmitByteSynch(&My_UART, 'k');
-	itr++;
+	Local_u8itrator++;
 	while(RX_Flag){
-		while(d[itr-1] != '\n'){
+		while(Locla_u8Buffer[Local_u8itrator-1] != '\n'){
 			MSTK_vSetIntervalSingle(8000, APP_vBootloaderJump);
-			d[itr] = MUART_u8ReceiveByteSynchBlocking(&My_UART);
+			Locla_u8Buffer[Local_u8itrator] = MUART_u8ReceiveByteSynchBlocking(&My_UART);
 			MSTK_vStopTimer();
 			MUART_vTransmitByteSynch(&My_UART, 'k');
-			itr++;
+			Local_u8itrator++;
 		}
-		if((d[0] == 'E') && (d[1]== 'N') && (d[2] == 'D')){
+		if((Locla_u8Buffer[0] == 'E') && (Locla_u8Buffer[1]== 'N') && (Locla_u8Buffer[2] == 'D')){
 			u32 ActiveAppAddress = ACTIVE_APP_ADDRESS;
 			while(((*((volatile u32 *)(ActiveAppAddress))) & 0xFF) == 0){
 				ActiveAppAddress++;
@@ -126,11 +134,13 @@ void APP_vBootloaderWrite(){
 			conf.Data = 0x0;
 			MFMI_vFlashWrite(&conf);
 			APP_vBootloaderJump();
+			RX_Flag =0;
 		}
 		else{
-			HEXPARESR_vParseRecordAndFlashIt(d);
+
+			HEXPARESR_vParseRecordAndFlashIt(Locla_u8Buffer);
 			MUART_vTransmitByteSynch(&My_UART, 'k');
 		}
-		itr = 0;
+		Local_u8itrator = 0;
 	}
 }
