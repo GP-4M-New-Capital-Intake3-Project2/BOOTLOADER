@@ -29,6 +29,7 @@ void APP_vBootloaderInit(void);
 void APP_vBootloaderWrite(void);
 static void APP_vBootloaderJump(void);
 static void APP_vBootloaderGetActiveBank(void);
+static u8 APP_u32BootloaderRecordvalidation(u8 * Copy_u8DataBuffer, u8 BufferSize);
 
 
 

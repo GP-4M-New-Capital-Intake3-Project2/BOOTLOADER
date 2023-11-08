@@ -1,1 +1,1 @@
-blinkLed
+         ttl.write(char.encode())

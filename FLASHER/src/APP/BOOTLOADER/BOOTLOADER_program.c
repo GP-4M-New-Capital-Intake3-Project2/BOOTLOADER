@@ -33,7 +33,16 @@ FMI_WriteOperationData conf={	.DataSize = 1,
 
 u8 ActiveBank = NO_APP;
 
-
+/*
+ * to know the active app bank
+ * go to sector 5
+ * read how many bytes equal zero
+ * take the reminder by 2
+ * if the sector 5 reach the end
+ * save the number in ram
+ * erase sector 5
+ * write it again
+ * */
 static void APP_vBootloaderGetActiveBank(){
 	u8 counter = 0;
 	u32 ActiveAppAddress = ACTIVE_APP_ADDRESS;
@@ -53,6 +62,36 @@ static void APP_vBootloaderGetActiveBank(){
 	}
 }
 
+/* fetch the crc from received data
+ * calculate crc for useful data
+ * compare them
+ * */
+static u8 APP_u32BootloaderRecordvalidation(u8 * Copy_u8DataBuffer, u8 BufferSize){
+	u32 Local_u32CrcCalculated=0;
+	u32 Local_u32CrcFetched=0;
+	u8 Local_u8ValidationState = 0;
+	u8 Local_u8Iterator=0;
+	u8 Local_u8ParsedValue=0;
+	//fetch CRC form record "buffer -8:crc -1:'\n' -1:' '"
+	for(Local_u8Iterator = BufferSize-9; Local_u8Iterator < BufferSize-1; Local_u8Iterator++ ){
+		Local_u8ParsedValue = HEXPARSER_su8AsciiToHex(Copy_u8DataBuffer[Local_u8Iterator]);
+
+		Local_u32CrcFetched = (Local_u32CrcFetched <<4)|Local_u8ParsedValue;
+	}
+
+	// calculate CRC for data only "buffer -8:crc -1:'\n' -1:' '"
+	Local_u32CrcCalculated =  CRC_vCrcHWCalculator(Copy_u8DataBuffer, BufferSize - 11);
+	if(Local_u32CrcCalculated == Local_u32CrcFetched){
+		Local_u8ValidationState = 1;
+	}
+	return Local_u8ValidationState;
+}
+
+/*
+ * get the active app bank number
+ * change the address of vector table
+ * start the app
+ * */
 static void APP_vBootloaderJump(void){
 	APP_vBootloaderGetActiveBank();
 
@@ -70,6 +109,13 @@ static void APP_vBootloaderJump(void){
 		APP(); //jump Reset handler [startup code]
 	}
 }
+
+/*
+ * get the active app bank number
+ * erase unuseful area
+ * set the address of sector that will receive any updates
+ * start a timer to jump to the active app if exist
+ * */
 void APP_vBootloaderInit(){
 	APP_vBootloaderGetActiveBank();
 	/*
@@ -104,11 +150,19 @@ void APP_vBootloaderInit(){
 	}
 }
 
-
+/*
+ * Receive data from uart until '\n'
+ * check the data
+ * if the crc is correct send 'k' for confirmation
+ * if not send 'E' to ask for this record again
+ * if the data buffer equal 'END' jump to the new app
+ * if you do not able to receive any data for 8 seconds jump on the active app
+ * */
 void APP_vBootloaderWrite(){
 
 	u8 Local_u8itrator=0;
 	u8 Locla_u8Buffer[50]={} ;
+	u8 Local_u8RecordValidation = 0;
 	//	flag to detect new hex code
 	u8 RX_Flag = 1;
 	//wait for UART RX Flag
@@ -137,10 +191,15 @@ void APP_vBootloaderWrite(){
 			RX_Flag =0;
 		}
 		else{
-
-			HEXPARESR_vParseRecordAndFlashIt(Locla_u8Buffer);
-			MUART_vTransmitByteSynch(&My_UART, 'k');
+			Local_u8RecordValidation =  APP_u32BootloaderRecordvalidation(Locla_u8Buffer, Local_u8itrator);
+			if(Local_u8RecordValidation == 1){
+				HEXPARESR_vParseRecordAndFlashIt(Locla_u8Buffer);
+				MUART_vTransmitByteSynch(&My_UART, 'k');
+			}else{
+				MUART_vTransmitByteSynch(&My_UART, 'E');
+			}
 		}
 		Local_u8itrator = 0;
+		Local_u8RecordValidation =0;
 	}
 }
