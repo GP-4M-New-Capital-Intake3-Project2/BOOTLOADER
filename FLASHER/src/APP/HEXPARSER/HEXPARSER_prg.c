@@ -34,6 +34,10 @@ u8 HEXPARSER_su8AsciiToHex(u8 A_u8Ascii)
 	{
 		L_u8ReturnHex = A_u8Ascii - 'A' +10 ;
 	}
+	else if(A_u8Ascii>='a' && A_u8Ascii<='f')
+	{
+		L_u8ReturnHex = A_u8Ascii - 'a' +10 ;
+	}
 	return L_u8ReturnHex;
 }
 ////////////////////////////////////////////////////

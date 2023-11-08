@@ -29,6 +29,7 @@ CPP_DEPS :=
 SUBDIRS := \
 src/APP/BOOTLOADER \
 src/APP/HEXPARSER \
+src/MCAL/CRC \
 src/MCAL/FMI \
 src/MCAL/GPIO \
 src/MCAL/NVIC \

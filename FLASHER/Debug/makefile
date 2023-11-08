@@ -19,6 +19,7 @@ RM := rm -rf
 -include src/MCAL/NVIC/subdir.mk
 -include src/MCAL/GPIO/subdir.mk
 -include src/MCAL/FMI/subdir.mk
+-include src/MCAL/CRC/subdir.mk
 -include src/APP/HEXPARSER/subdir.mk
 -include src/APP/BOOTLOADER/subdir.mk
 -include src/subdir.mk
@@ -69,7 +70,7 @@ all: FLASHER.elf secondary-outputs
 FLASHER.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM GNU C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"FLASHER.map" --specs=nano.specs -o "FLASHER.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"FLASHER.map" --specs=nano.specs -o "FLASHER.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
