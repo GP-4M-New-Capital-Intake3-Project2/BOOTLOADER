@@ -1,1 +1,0 @@
-         ttl.write(char.encode())

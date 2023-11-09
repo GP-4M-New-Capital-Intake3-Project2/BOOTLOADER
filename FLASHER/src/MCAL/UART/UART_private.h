@@ -1,10 +1,11 @@
-/*
- * NAME :UART_prv.h
- *
- * Created on: Aug 23, 2023
- *
- * Author: Mo'men Ahmed
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :UART_private.h
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
+
 
 #ifndef MCAL_UART_UART_PRV_H_
 #define MCAL_UART_UART_PRV_H_

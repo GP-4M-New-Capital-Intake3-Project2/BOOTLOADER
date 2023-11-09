@@ -1,10 +1,10 @@
-/*
- * NAME :GPIO_prv.h
- *
- * Created on: Jul 3, 2023
- *
- * Author: Mo'men Ahmed
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :GPIO_private.h
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
 
 #ifndef MCAL_GPIO_GPIO_PRV_H_
 #define MCAL_GPIO_GPIO_PRV_H_

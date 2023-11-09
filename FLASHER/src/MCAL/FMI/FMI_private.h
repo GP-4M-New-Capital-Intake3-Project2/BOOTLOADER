@@ -1,15 +1,16 @@
-/*
- * NAME :Flash_Prv.h
- *
- * Created on: Aug 31, 2023
- *
- * Author: Mo'men Ahmed
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :FMI_private.h
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
+
 
 #ifndef MCAL_FMI_FMI_PRV_H_
 #define MCAL_FMI_FMI_PRV_H_
 
-#define FLASH_NUM_OF_SECTORS   8
+#define FLASH_NUM_OF_SECTORS 6
 
 #define FMI_BASE_ADDRESS 0x40023C00
 

@@ -1,15 +1,16 @@
-/*
- * NAME :RCC_cfg.h
- *
- * Created on: Jun 29, 2023
- *
- * Author: Mo'men Ahmed
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :RCC_config.h
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
+
 
 #ifndef MCAL_RCC_CFG_H_
 #define MCAL_RCC_CFG_H_
 
-#include "RCC_prv.h"
+#include "RCC_private.h"
 
 /*options of system clock:
  * 1- HSI

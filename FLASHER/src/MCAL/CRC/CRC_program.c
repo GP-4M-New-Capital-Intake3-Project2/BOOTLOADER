@@ -1,3 +1,12 @@
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :CRC_program.c
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
+
+
 #include "../../LIB/BIT_MATH.h"
 #include "../../LIB/STD_TYPES.h"
 

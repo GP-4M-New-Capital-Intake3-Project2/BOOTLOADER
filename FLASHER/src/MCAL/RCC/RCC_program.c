@@ -1,15 +1,16 @@
-/*
- * NAME :RCC_int.h
- *
- * Created on: Jun 29, 2023
- *
- * Author: Mo'men Ahmed
- */
-#include "RCC_cfg.h"
-#include "RCC_int.h"
-#include "RCC_prv.h"
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :RCC_program.c
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
 #include "../../LIB/BIT_MATH.h"
 #include "../../LIB/STD_TYPES.h"
+
+#include "RCC_cofig.h"
+#include "RCC_private.h"
+#include "RCC_interface.h"
 
 //RCC initialization
 void MRCC_vInit(void)

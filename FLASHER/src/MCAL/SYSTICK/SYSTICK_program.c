@@ -1,17 +1,17 @@
-/*
- * NAME :SYSTICK_prog.c
- *
- * Created on: Jul 17, 2023
- *
- * Author: Mo'men Ahmed
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :SYSTICK_program.c
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
 
 #ifndef MCAL_SYSTICK_SYSTICJ_PROG_C_
 #define MCAL_SYSTICK_SYSTICJ_PROG_C_
 
-#include "SYSTICK_cfg.h"
-#include "SYSTICK_prv.h"
-#include "SYSTICK_int.h"
+#include "SYSTICK_config.h"
+#include "SYSTICK_private.h"
+#include "SYSTICK_interface.h"
 #include "../../LIB/STD_TYPES.h"
 #include "../../LIB/BIT_MATH.h"
 

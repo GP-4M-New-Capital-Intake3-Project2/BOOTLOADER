@@ -1,9 +1,10 @@
-/*
- * BOOTLOADER_private.h
- *
- *  Created on: ???/???/????
- *      Author: ABDELRHMAN ELSHIKH
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :BOOTLOADER_private.h
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
 
 #ifndef APP_BOOTLOADER_BOOTLOADER_PRIVATE_H_
 #define APP_BOOTLOADER_BOOTLOADER_PRIVATE_H_

@@ -1,17 +1,16 @@
-/*
- * NAME :Flash_Prog.c
- *
- * Created on: Aug 31, 2023
- *
- * Author: Mo'men Ahmed
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :FMI_program.c
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
 
 #include "../../LIB/STD_TYPES.h"
 #include "../../LIB/BIT_MATH.h"
 
-#include "FMI_Interface.h"
-#include "FMI_Prv.h"
-#include "FMI_Config.h"
+#include "FMI_interface.h"
+#include "FMI_private.h"
 
 void MFMI_vEraseAppArea(FMI_SectorNum_t A_u8StartingSector)
 {

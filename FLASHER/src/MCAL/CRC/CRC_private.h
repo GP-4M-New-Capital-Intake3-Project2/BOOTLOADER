@@ -1,9 +1,11 @@
-/*
- * CRC_private.h
- *
- *  Created on: Oct 25, 2023
- *      Author: Abdelrhman Elshikh
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :CRC_private.h
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
+
 
 #ifndef MCAL_CRC_CRC_PRIVATE_H_
 #define MCAL_CRC_CRC_PRIVATE_H_

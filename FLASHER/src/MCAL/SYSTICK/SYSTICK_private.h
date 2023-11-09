@@ -1,10 +1,11 @@
-/*
- * NAME :SYSTICK_prv.h
- *
- * Created on: Jul 17, 2023
- *
- * Author: Mo'men Ahmed
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :SYSTICK_private.h
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
+
 #include "../../LIB/STD_TYPES.h"
 
 #ifndef MCAL_SYSTICK_SYSTICK_PRV_H_

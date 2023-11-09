@@ -1,16 +1,15 @@
-/*
- * NAME :GPIO_prog.c
- *
- * Created on: Jul 3, 2023
- *
- * Author: Mo'men Ahmed
- */
-#include "GPIO_prv.h"
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :GPIO_program.c
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
 
 #include "../../LIB/STD_TYPES.h"
 #include "../../LIB/BIT_MATH.h"
-#include "GPIO_config.h"
-#include "GPIO_int.h"
+#include "GPIO_interface.h"
+#include "GPIO_private.h"
 
 void MGPIO_vInit(MGPIO_Config_t* copy_Config_Struct)
 {

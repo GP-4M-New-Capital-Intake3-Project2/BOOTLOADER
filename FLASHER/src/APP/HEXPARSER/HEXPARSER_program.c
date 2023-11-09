@@ -1,23 +1,23 @@
-/*
- * HEXPARSER_prg.c
- *
- *  Created on: Sep 26, 2023
- *      Author: admin
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :HEXPARSER_program.c
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
 
 
 #include "../../LIB/STD_TYPES.h"
 #include "../../LIB/BIT_MATH.h"
 #include "../../MCAL/FMI/FMI_Interface.h"
+#include "HEXPARSER_interface.h"
 
 #define BASE_ADDRESS    0x08000000
 //'0' --> 0   '0'-'0' = 0;   //'0' = 48  '1' = 49
 //'1' --> 1   '1'-'0' = 1;
-//'9' --> 9   '9'-'0' = 9;
 
 //'A' --> 10  'A'-'A'+10=10;
 //'B' --> 11  'B'-'A'+10=11;
-//'f'
 
 extern FMI_WriteOperationData mydata;
 

@@ -1,12 +1,12 @@
 #include "LIB/BIT_MATH.h"
 #include "LIB/STD_TYPES.h"
 
-#include "MCAL/RCC/RCC_int.h"
-#include "MCAL/SYSTICK/SYSTICK_int.h"
+#include "MCAL/RCC/RCC_interface.h"
+#include "MCAL/SYSTICK/SYSTICK_interface.h"
 #include "MCAL/FMI/FMI_Interface.h"
-#include "MCAL/GPIO/GPIO_int.h"
+#include "MCAL/GPIO/GPIO_interface.h"
 #include "MCAL/UART/UART_Interface.h"
-#include "APP/HEXPARSER/HEXPARSER_int.h"
+#include "APP/HEXPARSER/HEXPARSER_interface.h"
 #include "APP/BOOTLOADER/BOOTLOADER_interface.h"
 #include "APP/BOOTLOADER/BOOTLOADER_private.h"
 

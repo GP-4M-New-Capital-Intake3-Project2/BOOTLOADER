@@ -1,19 +1,20 @@
-/*
- * NAME :UART_Prog.c
- *
- * Created on: Aug 23, 2023
- *
- * Author: Mo'men Ahmed
- */
+/************************************************************************
+ * Author           :Abdelrhman Elshikh
+ * File description :UART_program.c
+ * Date             :20/10/2023
+ * Target           :STM32F401
+ * Version          :v0.1
+ ************************************************************************/
+
 
 #include "../../LIB/STD_TYPES.h"
 #include "../../LIB/BIT_MATH.h"
 
+#include "../GPIO/GPIO_interface.h"
+
 #include "UART_Interface.h"
 #include "UART_Config.h"
-#include "UART_prv.h"
-
-#include "../GPIO/GPIO_int.h"
+#include "UART_private.h"
 
 void (*MUART1_CallBackPtr)(void)=NULL;
 void (*MUART2_CallBackPtr)(void)=NULL;
@@ -103,65 +104,6 @@ void MUART_vTransmitByteSynch(MUART_Config_t* My_UART , u8 A_u8Byte)
 }
 
 
-u8 MUART_vTransmitByteAsynch(MUART_Config_t* My_UART , u8 A_u8Byte)
-{
-	if(GET_BIT(My_UART ->UART_ID -> SR , UART_TXE_BIT) == 1)
-	{
-		My_UART ->UART_ID -> DR = A_u8Byte;
-       return UART_SUCCESS;
-	}
-	else
-	{
-		return UART_FAIL;
-	}
-}
-
-void MUART_vTransmitString(MUART_Config_t* My_UART , u8* A_ptru8string)
-{
-	u8 iterator = 0;
-	while(A_ptru8string[iterator] != '\0')
-	{
-		MUART_vTransmitByteSynch(My_UART ->UART_ID, A_ptru8string[iterator]);
-		iterator++;
-	}
-}
-
-u8 MUART_u8ReceiveByteSynchNonBlocking(MUART_Config_t* My_UART)
-{
- u32 timeout = 0;
- u8 ReceivedByte;
-	while(GET_BIT(My_UART ->UART_ID -> SR , UART_RXNE_BIT) == 0  || timeout < THRESHOLD_VALUE)
-	{
-		timeout ++;
-	}
-	//AFTER THIS LOOP, WHETHER UART RECEIVES A BYTE OR TIMEOUT FINISHES
-	if(timeout == THRESHOLD_VALUE)
-	{
-		ReceivedByte = 255;            //255 IS NOT A VALID ASCII NUMBER
-	}
-	else
-	{
-		ReceivedByte = My_UART ->UART_ID -> DR;
-	}
-	return ReceivedByte;
-}
-
-void MUART_vReceiveStringSynchNonBlocking(MUART_Config_t* My_UART ,u8 A_u8str[] ,u32 A_u32Size )
-{
-	u32 i = 0;
-	for (; i<A_u32Size ;i++)
-	{
-		A_u8str[i] = MUSART_u8ReceiveByteSynchNonBlocking(My_UART ->UART_ID);
-		if(A_u8str[i]== 255 )  //TIMEOUT
-		{
-//			A_u8str[i] = '\0';
-			break;
-		}
-	}
-
-A_u8str[i-1] = '\0';
-}
-
 u8 MUART_u8ReceiveByteSynchBlocking(MUART_Config_t* My_UART )
 {
 	while(GET_BIT(My_UART ->UART_ID -> SR , UART_RXNE_BIT) == 0)
@@ -178,70 +120,3 @@ void MUART_voidClearFlags(UART_MemMap_t *UARTx)
 {
 	UARTx -> SR = 0;
 }
-
-u8 MUART_u8ReadDataRegister(MUART_Config_t* My_UART)
-{
-	return My_UART ->UART_ID -> DR;
-}
-
-void MUART1_vSetCallBack(void (*ptr) (void) )
-{
-	ptr = MUART1_CallBackPtr;
-}
-
-void MUART2_vSetCallBack(void (*ptr) (void) )
-{
-	ptr = MUART2_CallBackPtr;
-}
-
-void MUART6_vSetCallBack(void (*ptr) (void) )
-{
-	ptr = MUART6_CallBackPtr;
-}
-
-void USART1_IRQHandler(void)
-{
-	MUART_voidClearFlags(UART1);
-	if(MUART1_CallBackPtr != NULL)
-	{
-		MUART1_CallBackPtr();
-	}
-}
-
-void USART2_IRQHandler(void)
-{
-	MUART_voidClearFlags(UART2);
-	if(MUART2_CallBackPtr != NULL)
-	{
-		MUART2_CallBackPtr();
-	}
-}
-
-void USART6_IRQHandler(void)
-{
-	MUART_voidClearFlags(UART6);
-	if(MUART6_CallBackPtr != NULL)
-	{
-		MUART6_CallBackPtr();
-	}
-}
-
-u8 MUART_u8ReceiveByteAsych_(MUART_Config_t* My_UART, u8* A_pu8Ptr)
-{
-	u8 ReceiveStatus = 0;
-
-	if(GET_BIT(My_UART ->UART_ID -> SR , UART_RXNE_BIT) == 0)
-	{
-		//DATA HAS NOT BEEN RECEIVED YET
-	}
-	else
-	{
-		// UART HAS RECEIVED A BYTE
-		ReceiveStatus = 1;
-		*A_pu8Ptr = My_UART ->UART_ID -> DR;
-	}
-
-   return ReceiveStatus;
-}
-
-
