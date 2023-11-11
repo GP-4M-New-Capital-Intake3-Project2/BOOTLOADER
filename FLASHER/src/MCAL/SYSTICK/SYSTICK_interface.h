@@ -32,7 +32,7 @@ void MSTK_vDelayms(u32 A_u32DelayMilliSec);
  * @name		MSTK_vSetIntervalSingle
  * @brief 	execute function after period of time only once
  * @param	A_u32DelayMilliSec : the time with milli seconds
- *          ptr : pointer to function that will be done 
+ * @param   ptr : pointer to function that will be done 
  * @return	void
 */
 void MSTK_vSetIntervalSingle(u32 A_u32DelayMilliSec, void (*ptr) (void));
@@ -42,7 +42,7 @@ void MSTK_vSetIntervalSingle(u32 A_u32DelayMilliSec, void (*ptr) (void));
  * @name		MSTK_vSetIntervalSingle
  * @brief 	execute function after period of time repeatedly 
  * @param	A_u32DelayMilliSec : the time with milli seconds
- *          ptr : pointer to function that will be done 
+ * @param   ptr : pointer to function that will be done 
  * @return	void
 */
 void MSTK_vSetIntervalPeriodic(u32 A_u32DelayMilliSec, void (*ptr) (void));
@@ -59,7 +59,7 @@ void MSTK_vDelayus(u32 A_u32DelayMicroSec);
  * @name		MSTK_vSetIntervalSingle
  * @brief 	execute function after period of time only once
  * @param	A_u32DelayMicroSec : the time with micro seconds
- *          ptr : pointer to function that will be executed 
+ * @param   ptr : pointer to function that will be executed 
  * @return	void
 */
 void MSTK_vSetIntervalSingleMicro(u32 A_u32DelayMicroSec, void (*ptr) (void));
@@ -68,7 +68,7 @@ void MSTK_vSetIntervalSingleMicro(u32 A_u32DelayMicroSec, void (*ptr) (void));
  * @name		MSTK_vSetIntervalSingle
  * @brief 	execute function after period of time repeatedly 
  * @param	A_u32DelayMicroSec : the time with micro seconds
- *          ptr : pointer to function that will be executed 
+ * @param   ptr : pointer to function that will be executed 
  * @return	void
 */
 void MSTK_vSetIntervalPeriodicMicro(u32 A_u32DelayMicroSec, void (*ptr) (void));

@@ -46,8 +46,8 @@ void MGPIO_vInit(MGPIO_Config_t* copy_Config_Struct);
  * @name		MGPIO_vSetPin
  * @brief 	Write a value on a pin  
  * @param	copy_Port_ID : GPIO port,
- * 			copy_Pin_ID : GPIO pin number
- * 			copy_Pin_value : the value to be written (HIGH or LOW)
+ * @param	copy_Pin_ID : GPIO pin number
+ * @param	copy_Pin_value : the value to be written (HIGH or LOW)
  * @return	void
 */
 void MGPIO_vSetPin(GPIO_PortNum_t copy_Port_ID, GPIO_PinNum_t copy_Pin_ID, GPIO_PinValues_t copy_Pin_value );
@@ -55,8 +55,8 @@ void MGPIO_vSetPin(GPIO_PortNum_t copy_Port_ID, GPIO_PinNum_t copy_Pin_ID, GPIO_
  * @name		MGPIO_vSetPinFast
  * @brief 	Write a value on a pin with atomic access 
  * @param	copy_Port_ID : GPIO port,
- * 			copy_Pin_ID : GPIO pin number
- * 			copy_Pin_value : the value to be written (HIGH or LOW)
+ * @param	copy_Pin_ID : GPIO pin number
+ * @param	copy_Pin_value : the value to be written (HIGH or LOW)
  * @return	void
 */
 void MGPIO_vSetPinFast(GPIO_PortNum_t copy_Port_ID, GPIO_PinNum_t copy_Pin_ID,GPIO_PinValues_t copy_Pin_value );
@@ -65,7 +65,7 @@ void MGPIO_vSetPinFast(GPIO_PortNum_t copy_Port_ID, GPIO_PinNum_t copy_Pin_ID,GP
  * @name		MGPIO_vTogPin
  * @brief 	Toggle the value on a pin  
  * @param	copy_Port_ID : GPIO port,
- * 			copy_Pin_ID : GPIO pin number
+ * @param	copy_Pin_ID : GPIO pin number
  * @return	void
 */
 void MGPIO_vTogPin (GPIO_PortNum_t copy_Port_ID, GPIO_PinNum_t copy_Pin_ID);
@@ -74,7 +74,7 @@ void MGPIO_vTogPin (GPIO_PortNum_t copy_Port_ID, GPIO_PinNum_t copy_Pin_ID);
  * @name		MGPIO_u8GetPin
  * @brief 	read the value from a pin  
  * @param	copy_Port_ID : GPIO port,
- * 			copy_Pin_ID : GPIO pin number
+ * @param	copy_Pin_ID : GPIO pin number
  * @return	pin_value : pin state
 */
 u8 MGPIO_u8GetPin(GPIO_PortNum_t copy_Port_ID, GPIO_PinNum_t copy_Pin_ID );

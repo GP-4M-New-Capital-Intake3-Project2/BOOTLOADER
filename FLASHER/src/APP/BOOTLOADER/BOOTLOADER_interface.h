@@ -63,7 +63,7 @@ static void APP_vBootloaderGetActiveBank(void);
  * @name		APP_u32BootloaderRecordvalidation
  * @brief 	know the active app bank depending on number of zero bytes on sector 5
  * @param	Copy_u8DataBuffer: pointer to the data buffer,
- * 			BufferSize: data size
+ * @param	BufferSize: data size
  * @return	ValidationState : the result of comparing the two CRC codes
 */
 static u8 APP_u32BootloaderRecordvalidation(u8 * Copy_u8DataBuffer, u8 BufferSize);

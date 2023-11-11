@@ -116,7 +116,7 @@ void MUART_vDisable(MUART_Config_t* My_UART);
  * @name		MUART_vTransmitByteSynch
  * @brief 	send byte by uart 
  * @param	My_UART : pointer of MUART_Config_t struct 
- * 			A_u8Byte : byte data to be sent
+ * @param	A_u8Byte : byte data to be sent
  * @return	void
 */
 void MUART_vTransmitByteSynch(MUART_Config_t* My_UART , u8 A_u8Byte);

@@ -64,7 +64,7 @@ void MRCC_vInit(void);
  * @name		MRCC_vEnableClock
  * @brief 	Enable RCC clock for a peripheral   
  * @param	copy_Bus_ID : the bus number of the peripheral, 
- * 			copy_Per_ID : peripheral ID
+ * @param	copy_Per_ID : peripheral ID
  * @return	void
 */
 void MRCC_vEnableClock(RCC_BusId_t copy_Bus_ID , RCC_PerId_t copy_Per_ID);
@@ -73,7 +73,7 @@ void MRCC_vEnableClock(RCC_BusId_t copy_Bus_ID , RCC_PerId_t copy_Per_ID);
  * @name		MRCC_vEnableClock
  * @brief 	Disable RCC clock for a peripheral   
  * @param	copy_Bus_ID : the bus number of the peripheral, 
- * 			copy_Per_ID : peripheral ID
+ * @param	copy_Per_ID : peripheral ID
  * @return	void
 */
 void MRCC_vDisableClock(RCC_BusId_t copy_Bus_ID , RCC_PerId_t copy_Per_ID);

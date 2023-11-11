@@ -9,9 +9,12 @@
 '''
 
 import serial, time
+
 '''
-CRC function 
-simulate STM32F4 CRC 32 bit register 
+Method Name: CalculateCrc
+Method Description: CRC function simulate STM32F4 CRC 32 bit register 
+:param data: Hex file recode
+:type data : str
 '''
 def CalculateCrc(data):
    crc = 0xffffffff 

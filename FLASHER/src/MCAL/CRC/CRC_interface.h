@@ -27,7 +27,7 @@ void CRC_vReset();
  * @name		CRC_vCrcHWCalculator
  * @brief 	Calculate CRC code base on 32 bit word
  * @param	Copy_u8Data : data record,
- * 			DataSize : data size
+ * @param	DataSize : data size
  * @return	Local_CRCResulr : 32 bit CRC code
 */
 u32 CRC_vCrcHWCalculator(u8 * Copy_u8Data , u32 DataSize);
