@@ -1,10 +1,10 @@
-/************************************************************************
- * Author           :Abdelrhman Elshikh
- * File description :UART_config.c
- * Date             :20/10/2023
- * Target           :STM32F401
- * Version          :v0.1
- ************************************************************************/
+/*
+ * NAME :UART_Config.c
+ *
+ * Created on: Aug 23, 2023
+ *
+ * Author: Mo'men Ahmed
+ */
 
 #include "UART_Interface.h"
 

@@ -1,15 +1,15 @@
-/************************************************************************
- * Author           :Abdelrhman Elshikh
- * File description :UART_interface.h
- * Date             :20/10/2023
- * Target           :STM32F401
- * Version          :v0.1
- ************************************************************************/
+/*
+ * NAME :UART_Interface.h
+ *
+ * Created on: Aug 23, 2023
+ *
+ * Author: Mo'men Ahmed
+ */
 
 #ifndef MCAL_UART_UART_INTERFACE_H_
 #define MCAL_UART_UART_INTERFACE_H_
 
-#include "UART_private.h"
+#include "UART_prv.h"
 #include "../../LIB/STD_TYPES.h"
 
 #define UART1_BASE_ADDRESS    0x40011000
@@ -88,30 +88,11 @@ typedef struct{
 	MUART_SampleBitMethod_t    SampleBitMethod;
 }MUART_Config_t;
 
-/*
- * @name		MUART_vInit
- * @brief 	initialize uart connection 
- * @param	My_UART : pointer of MUART_Config_t struct 
- * @return	void
-*/
 void MUART_vInit(MUART_Config_t* My_UART);
-
-/*
- * @name		MUART_vEnable
- * @brief 	start uart connection 
- * @param	My_UART : pointer of MUART_Config_t struct 
- * @return	void
-*/
 void MUART_vEnable(MUART_Config_t* My_UART);
-
-/*
- * @name		MUART_vDisable
- * @brief 	stop uart connection 
- * @param	My_UART : pointer of MUART_Config_t struct 
- * @return	void
-*/
 void MUART_vDisable(MUART_Config_t* My_UART);
 
+<<<<<<< HEAD
 /*
  * @name		MUART_vTransmitByteSynch
  * @brief 	send byte by uart 
@@ -119,23 +100,29 @@ void MUART_vDisable(MUART_Config_t* My_UART);
  * @param	A_u8Byte : byte data to be sent
  * @return	void
 */
+=======
+>>>>>>> parent of f1c74fc (Document source code)
 void MUART_vTransmitByteSynch(MUART_Config_t* My_UART , u8 A_u8Byte);
+u8 MUART_vTransmitByteAsynch(MUART_Config_t* My_UART , u8 A_u8Byte);
+void MUART_vTransmitString(MUART_Config_t* My_UART , u8* A_ptru8string);
 
-/*
- * @name		MUART_vTransmitByteSynch
- * @brief 	send byte by uart 
- * @param	My_UART : pointer of MUART_Config_t struct
- * @return	UART_data_reg: the date that received in the register
-*/
+u8 MUART_u8ReceiveByteSynchNonBlocking(MUART_Config_t* My_UART);
+void MUART_vReceiveStringSynchNonBlocking(MUART_Config_t* My_UART ,u8 A_u8str[] ,u32 A_u32Size );
 u8 MUART_u8ReceiveByteSynchBlocking(MUART_Config_t* My_UART );
 
-
-/*
- * @name		MUART_voidClearFlags
- * @brief 	reset flages in state register
- * @param	My_UART : pointer of MUART_Config_t struct
- * @return	UART_data_reg: the date that received in the register
-*/
+void MUART_RxIntSetStatus(MUART_Config_t* My_UART, u8 A_u8Status);
 void MUART_voidClearFlags(UART_MemMap_t *USARTx);
+
+u8 MUART_u8ReadDataRegister(MUART_Config_t* My_UART);
+
+//THIS FUNCTION IS DONE FOR BOOTLOADER
+u8 MUART_u8ReceiveByteAsych_(MUART_Config_t* My_UART, u8* A_pu8Ptr);
+
+void MUART1_vSetCallBack(void (*ptr) (void) );
+void MUART2_vSetCallBack(void (*ptr) (void) );
+void MUART6_vSetCallBack(void (*ptr) (void) );
+
+
+
 
 #endif /* MCAL_UART_UART_INTERFACE_H_ */

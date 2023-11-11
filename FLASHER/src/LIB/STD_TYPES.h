@@ -1,21 +1,9 @@
-/************************************************************************
- * Author           :Abdelrhman Elshikh
- * File description :STD_TYPES.h
- * Date             :20/10/2023
- * Target           :STM32F401
- * Version          :v0.1
- ************************************************************************/
 
 #ifndef STD_TYPES_H
 #define STD_TYPES_H
 
 #ifndef NULL
 #define NULL ((void*)0)
-#endif
-
-
-#ifndef null
-#define null ((void *)0)
 #endif
 
 typedef unsigned char u8 ; 

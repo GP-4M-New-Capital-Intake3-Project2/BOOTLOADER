@@ -1,22 +1,20 @@
-/************************************************************************
- * Author           :Abdelrhman Elshikh
- * File description :BOOTLOADER_program.c
- * Date             :20/10/2023
- * Target           :STM32F401
- * Version          :v0.1
- ************************************************************************/
+/*
+ * BOOTLOADER_program.c
+ *
+ *  Created on: ???/???/????
+ *      Author: ABDELRHMAN ELSHIKH
+ */
 
 
 #include "../../LIB/BIT_MATH.h"
 #include "../../LIB/STD_TYPES.h"
 
-#include "../../MCAL/SYSTICK/SYSTICK_interface.h"
-#include "../../MCAL/FMI/FMI_Interface.h"
-#include "../../MCAL/UART/UART_Interface.h"
-#include "../../APP/HEXPARSER/HEXPARSER_interface.h"
-
 #include "BOOTLOADER_interface.h"
 #include "BOOTLOADER_private.h"
+#include "../../MCAL/SYSTICK/SYSTICK_int.h"
+#include "../../MCAL/FMI/FMI_Interface.h"
+#include "../../MCAL/UART/UART_Interface.h"
+#include "../../APP/HEXPARSER/HEXPARSER_int.h"
 
 extern MUART_Config_t My_UART;
 
